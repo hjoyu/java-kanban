@@ -2,13 +2,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Epic extends Task{
-     List<Integer> taskIds = new ArrayList<>();
 
-    public Epic(String name, String description,TaskStatus status) {
-        super(name, description,status);
+    private final List<Integer> taskIds = new ArrayList<>();
+
+    public Epic(String name, String description) {
+        super(name, description);
     }
 
-    /*public Epic(int id, String name, String description,TaskStatus status) {
-        super(id, name, description,status);
-    }*/
+    public List<Integer> getTaskIds() {
+        return taskIds;
+    }
+
+    public void addTaskIds(int id){taskIds.add(id);}
+
+    @Override
+    public String toString(){
+        return ("id = " + getId() +
+                ", имя эпика: " +getTaskName()+
+                ", описание: "+ getDescription() +
+                ", статус: "+ status + "// ");
+    }
+
 }
