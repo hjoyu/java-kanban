@@ -4,9 +4,7 @@ public class Task {
     private int id;
     private String taskName;
     private String description;
-    TaskStatus status;
-
-
+    private TaskStatus status;
 
     public Task(String name, String description){
         taskName=name;
@@ -24,7 +22,7 @@ public class Task {
 
     public String getTaskName(){return taskName;}
 
-    public void SetTaskName(String taskName){this.taskName=taskName;}
+    public void setTaskName(String taskName){this.taskName=taskName;}
 
     public void setDescription(String description){this.description=description;}
 
@@ -39,7 +37,7 @@ public class Task {
         return ("id = " + id +
                 ", имя задачи: " +taskName+
                 ", описание: "+ description +
-                ", статус: "+ status + "// ");
+                ", статус: "+ getTaskStatus() + "// ");
     }
 
 

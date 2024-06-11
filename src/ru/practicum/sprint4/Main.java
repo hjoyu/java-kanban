@@ -82,6 +82,11 @@ public class Main {
         taskManager.update(epic);
         System.out.println("изменили эпик 6: " + taskManager.getEpicById(epic3.getId()));
 
+        /*----------проверка метода удаления всех подзадач-----
+        taskManager.clearAllSubTasks();
+        System.out.println("\n список всех эпиков: " + taskManager.getAllEpics());
+        System.out.println("\n список всех сабтасков: " + taskManager.getAllSubTasks());*/
+
         System.out.println("\n Удаление по ID: удалили эпик 5 и подзадачу 4.2");
         taskManager.clearEpicById(epic2.getId());
         taskManager.clearSubTaskById(subTask2.getId());

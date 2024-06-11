@@ -1,8 +1,5 @@
 package ru.practicum.sprint4.service;
 
-/*import ru.practicum.sprint4.model.Task;
-import ru.practicum.sprint4.model.Epic;
-import ru.practicum.sprint4.model.SubTask;*/
 import ru.practicum.sprint4.model.*;
 
 import java.util.ArrayList;
@@ -47,6 +44,19 @@ public class TaskManager {
     }
 
     public void clearAllSubTasks() {
+        //первый вариант реализации метода
+        /*for(Integer id: subTasks.keySet()) {
+           SubTask subTask = subTasks.get(id);
+            Epic epic = epics.get(subTask.getEpicId());
+            epic.getTaskIds().clear();
+            epic.setTaskStatus(TaskStatus.NEW);
+        }*/
+        //второй вариант реализации метода
+        for(Integer id: epics.keySet()) {
+            Epic epic = epics.get(id);
+            epic.getTaskIds().clear();
+            epic.setTaskStatus(TaskStatus.NEW);
+        }
         subTasks.clear();
     }
 
@@ -59,7 +69,6 @@ public class TaskManager {
     public void createEpic(Epic epic) {
         epic.setId(generateId());
         epics.put(epic.getId(), epic);//в мапу epics кладем id эпика и сам epic
-        syncEpic(epic);
     }
 
     private void syncEpic(Epic epic) {
@@ -108,7 +117,6 @@ public class TaskManager {
 
     public void update(Epic epic){
         epics.replace(epic.getId(),epic);
-        syncEpic(epic);
     }
 
     public void update(SubTask subTask){
