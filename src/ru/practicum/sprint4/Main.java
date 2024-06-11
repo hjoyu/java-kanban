@@ -39,44 +39,52 @@ public class Main {
 
         System.out.println("-----------------------");
 
-        taskManager.createEpic(new Epic("Эпик 4", "Проверка работы эпика"));
-        taskManager.createEpic(new Epic("Эпик 5", "Проверка работы эпика"));
-        taskManager.createEpic(new Epic("Эпик 6", "Проверка работы эпика"));
+        Epic epic1 = new Epic("Эпик 4", "Проверка работы эпика");
+        Epic epic2 = new Epic("Эпик 5", "Проверка работы эпика");
+        Epic epic3 = new Epic("Эпик 6", "Проверка работы эпика");
+        taskManager.createEpic(epic1);
+        taskManager.createEpic(epic2);
+        taskManager.createEpic(epic3);
 
-        taskManager.createSubTask(new SubTask("ПодЭпик 4.1", "проверка первой подзадачи",4));
-        taskManager.createSubTask(new SubTask("ПодЭпик 4.2", "проверка второй подзадачи",4));
-        taskManager.createSubTask(new SubTask("ПодЭпик 5.1", "проверка первой подзадачи 5 эпика",5));
-        taskManager.createSubTask(new SubTask("ПодЭпик 5.2", "проверка второй подзадачи 5 эпика",5));
 
-        System.out.println("Все подзадачи: " + taskManager.getAllSubTasks());
+        SubTask subTask1 = new SubTask("ПодЭпик 4.1", "проверка первой подзадачи",epic1.getId());
+        SubTask subTask2 = new SubTask("ПодЭпик 4.2", "проверка второй подзадачи",epic1.getId());
+        SubTask subTask3 =new SubTask("ПодЭпик 5.1", "проверка первой подзадачи 5 эпика",epic2.getId());
+        SubTask subTask4 =new SubTask("ПодЭпик 5.2", "проверка второй подзадачи 5 эпика",epic2.getId());
+        taskManager.createSubTask(subTask1);
+        taskManager.createSubTask(subTask2);
+        taskManager.createSubTask(subTask3);
+        taskManager.createSubTask(subTask4);
+
+        System.out.println("\n Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("Все эпики: " + taskManager.getAllEpics());
 
-        System.out.println("вывели Эпик с id-4: " + taskManager.getEpicById(4));
-        System.out.println("вывели Cабтаск с id-7: " + taskManager.getSubTaskById(7));
+        System.out.println("\n вывели Эпик с id-4: " + taskManager.getEpicById(epic1.getId()));
+        System.out.println("вывели Cабтаск с id-7: " + taskManager.getSubTaskById(subTask1.getId()));
 
         System.out.println("\n Получаем сабтаски 4-го эпика: " + taskManager.getSubTaskByEpic(4));
 
         System.out.println("обновление Сабтасков:");
-        SubTask subTask = new SubTask("Подзадача 4.1", "проверка исправленной подзадачи",4);
-        subTask.setId(7);
+        SubTask subTask = new SubTask("Подзадача 4.1", "проверка исправленной подзадачи",epic1.getId());
+        subTask.setId(subTask1.getId());
         subTask.setTaskStatus(TaskStatus.IN_PROGRESS);
         taskManager.update(subTask);
-        SubTask subTask1 = new SubTask("Подзадача 4.2", "проверка исправленной подзадачи",4);
-        subTask1.setId(8);
-        subTask1.setTaskStatus(TaskStatus.IN_PROGRESS);
-        taskManager.update(subTask1);
+        SubTask subTask5 = new SubTask("Подзадача 4.2", "проверка исправленной подзадачи",epic1.getId());
+        subTask5.setId(subTask2.getId());
+        subTask5.setTaskStatus(TaskStatus.IN_PROGRESS);
+        taskManager.update(subTask5);
         System.out.println("Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("Все эпики: " + taskManager.getAllEpics());
 
-        System.out.println("Обновление Эпика:");
+        System.out.println("\n Обновление Эпика:");
         Epic epic = new Epic("Эпик 6", "Проверка исправления эпика");
-        epic.setId(6);
+        epic.setId(epic3.getId());
         taskManager.update(epic);
-        System.out.println("изменили эпик 6: " + taskManager.getEpicById(6));
+        System.out.println("изменили эпик 6: " + taskManager.getEpicById(epic3.getId()));
 
         System.out.println("\n Удаление по ID: удалили эпик 5 и подзадачу 4.2");
-        taskManager.clearEpicById(5);
-        taskManager.clearSubTaskById(8);
+        taskManager.clearEpicById(epic2.getId());
+        taskManager.clearSubTaskById(subTask2.getId());
         System.out.println("Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("Все эпики: " + taskManager.getAllEpics());
 
