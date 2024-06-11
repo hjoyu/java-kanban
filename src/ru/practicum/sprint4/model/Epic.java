@@ -15,14 +15,15 @@ public class Epic extends Task {
         return taskIds;
     }
 
-    public void addTaskIds(int id){taskIds.add(id);}
-
-    @Override
-    public String toString(){
-        return ("id = " + getId() +
-                ", имя эпика: " +getTaskName()+
-                ", описание: "+ getDescription() +
-                ", статус: "+ getTaskStatus() + ", Id подзадач: " + getTaskIds() + "// ");
+    public void addTaskIds(int id) {
+        taskIds.add(id);
     }
 
+    @Override
+    public String toString() {
+        return ("id = " + getId() +
+                ", имя эпика: " + getTaskName() +
+                ", описание: " + getDescription() +
+                ", статус: " + getTaskStatus() + ", Id подзадач: " + getTaskIds() + "// ");
+    }
 }
