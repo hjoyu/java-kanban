@@ -1,4 +1,4 @@
-
+package ru.practicum.sprint4.model;
 
 public class Task {
     private int id;

@@ -1,8 +1,13 @@
+package ru.practicum.sprint4.service;
+
+/*import ru.practicum.sprint4.model.Task;
+import ru.practicum.sprint4.model.Epic;
+import ru.practicum.sprint4.model.SubTask;*/
+import ru.practicum.sprint4.model.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-
 
 public class TaskManager {
     private final HashMap<Integer, Task> tasks;

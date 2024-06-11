@@ -1,7 +1,9 @@
+package ru.practicum.sprint4.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Epic extends Task{
+public class Epic extends Task {
 
     private final List<Integer> taskIds = new ArrayList<>();
 
@@ -20,7 +22,7 @@ public class Epic extends Task{
         return ("id = " + getId() +
                 ", имя эпика: " +getTaskName()+
                 ", описание: "+ getDescription() +
-                ", статус: "+ status + "// ");
+                ", статус: "+ getTaskStatus() + "Id подзадач: " + getTaskIds() + "// ");
     }
 
 }

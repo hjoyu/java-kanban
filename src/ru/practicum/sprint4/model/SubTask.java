@@ -1,3 +1,5 @@
+package ru.practicum.sprint4.model;
+
 public class SubTask extends Task {
 
     private final int epicId;
@@ -16,6 +18,6 @@ public class SubTask extends Task {
         return ("id = " + getId() +
                 ", имя подзадачи: " +getTaskName()+
                 ", описание: "+ getDescription() +
-                ", статус: "+ status + "// ");
+                ", статус: "+ getTaskStatus() + ", epicIds:" + getEpicId() + "// ");
     }
 }

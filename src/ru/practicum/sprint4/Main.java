@@ -1,4 +1,7 @@
+package ru.practicum.sprint4;
 
+import ru.practicum.sprint4.service.TaskManager;
+import ru.practicum.sprint4.model.*;
 
 public class Main {
 
@@ -53,19 +56,19 @@ public class Main {
 
         System.out.println("\n Получаем сабтаски 4-го эпика: " + taskManager.getSubTaskByEpic(4));
 
-        System.out.println("обновление SubTask:");
+        System.out.println("обновление Сабтасков:");
         SubTask subTask = new SubTask("Подзадача 4.1", "проверка исправленной подзадачи",4);
         subTask.setId(7);
-        subTask.setTaskStatus(TaskStatus.DONE);
+        subTask.setTaskStatus(TaskStatus.IN_PROGRESS);
         taskManager.update(subTask);
         SubTask subTask1 = new SubTask("Подзадача 4.2", "проверка исправленной подзадачи",4);
         subTask1.setId(8);
-        subTask1.setTaskStatus(TaskStatus.DONE);
+        subTask1.setTaskStatus(TaskStatus.IN_PROGRESS);
         taskManager.update(subTask1);
         System.out.println("Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("Все эпики: " + taskManager.getAllEpics());
 
-        System.out.println("Обновление Epic:");
+        System.out.println("Обновление Эпика:");
         Epic epic = new Epic("Эпик 6", "Проверка исправления эпика");
         epic.setId(6);
         taskManager.update(epic);
