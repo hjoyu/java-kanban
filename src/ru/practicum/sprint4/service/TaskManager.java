@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface TaskManager {
     //--------------получение всех задач-------------
-    List<Task> getAllTasks();
+    ArrayList<Task> getAllTasks();
 
-    List<Epic> getAllEpics();
+    ArrayList<Epic> getAllEpics();
 
-    List<SubTask> getAllSubTasks();
+    ArrayList<SubTask> getAllSubTasks();
 
     //-----------------очистка всех задач-------------------
     void clearAllTasks();
@@ -23,11 +23,11 @@ public interface TaskManager {
     void clearAllSubTasks();
 
     //----------------------Создание задач----------------------//
-    void createTask(Task newTask);
+    int createTask(Task newTask);
 
-    void createEpic(Epic epic);
+    int createEpic(Epic epic);
 
-    void createSubTask(SubTask subTask);
+    int createSubTask(SubTask subTask);
 
     //------------обновление задач------
     void update(Task newTask);
@@ -41,7 +41,7 @@ public interface TaskManager {
 
     Epic getEpicById(int nextId);
 
-    Task getSubTaskById(int nextId);
+    SubTask getSubTaskById(int nextId);
 
     //----------------удаление задач по id-------
     void clearTaskById(int nextId);
