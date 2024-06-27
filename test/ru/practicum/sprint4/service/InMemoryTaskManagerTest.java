@@ -94,5 +94,4 @@ class InMemoryTaskManagerTest {
         ArrayList<SubTask> subtasks = taskManager.getAllSubTasks();
         assertTrue(subtasks.isEmpty(), "Список не пуст");
     }
-
 }

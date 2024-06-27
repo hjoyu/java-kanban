@@ -16,16 +16,11 @@ public class InMemoryHistoryManager implements HistoryManager {
                 history.removeFirst();
             }
             history.add(task);
-            check++;
         }
     }
 
     @Override
     public ArrayList<Task> getHistory() {
             return new ArrayList<>(history);
-    }
-
-    public int getCheck(){
-        return check;
     }
 }
