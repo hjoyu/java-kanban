@@ -1,13 +1,13 @@
 package ru.practicum.sprint4;
 
-import ru.practicum.sprint4.service.TaskManager;
+import ru.practicum.sprint4.service.*;
+import ru.practicum.sprint4.service.InMemoryTaskManager;
 import ru.practicum.sprint4.model.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
-
+        TaskManager taskManager = Managers.getDefault();
 
         taskManager.createTask(new Task("Задача 1", "Помыть машину"));
         taskManager.createTask(new Task("Задача 2", "Подмести пол"));
@@ -19,7 +19,10 @@ public class Main {
         System.out.println(taskManager.getTaskById(2));
         System.out.println(taskManager.getTaskById(3));
 
-        System.out.println("Обновление задач:");
+        System.out.println("\n история");
+        System.out.println(taskManager.getHistory());
+
+        System.out.println("\n Обновление задач:");
         Task task4 = new Task("Задача 1", "Мою машину");
         task4.setId(1);
         task4.setTaskStatus(TaskStatus.IN_PROGRESS);
@@ -97,5 +100,7 @@ public class Main {
         taskManager.clearAllEpics();
         System.out.println(taskManager.getAllSubTasks());
         System.out.println(taskManager.getAllEpics());
+
     }
+
 }
