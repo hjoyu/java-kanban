@@ -17,7 +17,7 @@ class EpicTest {
 
         taskManager.createEpic(epic1);
         taskManager.createEpic(epic2);
-        epic2.setId(1);
+        epic2.setId(epic1.getId());
         assertEquals(epic1, epic2, "Ошибка, разные Эпики");
     }
 }

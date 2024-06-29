@@ -17,7 +17,7 @@ class SubTaskTest {
 
         taskManager.createSubTask(subtask1);
         taskManager.createSubTask(subtask2);
-        subtask2.setId(1);
+        subtask2.setId(subtask1.getId());
         assertEquals(subtask1, subtask2, "Ошибка, разные подзадачи");
     }
 }

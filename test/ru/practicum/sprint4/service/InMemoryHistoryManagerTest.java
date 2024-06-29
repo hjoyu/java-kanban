@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.practicum.sprint4.model.Task;
 import static org.junit.jupiter.api.Assertions.*;
+import static ru.practicum.sprint4.service.InMemoryHistoryManager.HISTORY_LIMIT;
 
 class InMemoryHistoryManagerTest {
 
@@ -24,7 +25,7 @@ class InMemoryHistoryManagerTest {
     void add(){
         historyManager.add(task);
         history = historyManager.getHistory();
-        assertEquals(1,history.size(), "длина списка не равна 1");
+        assertEquals(1,history.size(), "Lлина списка не равна 1");
     }
 
     @Test
@@ -33,7 +34,7 @@ class InMemoryHistoryManagerTest {
             historyManager.add(task);
         }
         history = historyManager.getHistory();
-        assertEquals(10, history.size(), "Длинна списка не соответсвует лимиту");
+        assertEquals(HISTORY_LIMIT, history.size(), "Длина списка не соответствует заданому лимиту");
     }
 
 

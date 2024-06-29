@@ -18,7 +18,7 @@ class TaskTest {
 
         taskManager.createTask(task1);
         taskManager.createTask(task2);
-        task2.setId(1);
+        task2.setId(task1.getId());
         assertEquals(task1, task2, "Ошибка, разные задачи");
     }
 }
