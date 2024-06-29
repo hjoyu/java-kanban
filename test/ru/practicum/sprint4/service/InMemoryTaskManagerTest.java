@@ -10,8 +10,6 @@ import ru.practicum.sprint4.model.SubTask;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class InMemoryTaskManagerTest {
     private static TaskManager taskManager;
     private static Task task;
