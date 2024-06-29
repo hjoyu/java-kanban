@@ -48,7 +48,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return ("id = " + id +
+        return ("id = " + getId() +
                 ", имя задачи: " + taskName +
                 ", описание: " + description +
                 ", статус: " + getTaskStatus() + "// ");
@@ -64,7 +64,7 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, taskName);
+        return Objects.hash(id);
     }
 }
 

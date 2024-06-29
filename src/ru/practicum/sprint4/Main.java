@@ -1,7 +1,6 @@
 package ru.practicum.sprint4;
 
 import ru.practicum.sprint4.service.*;
-import ru.practicum.sprint4.service.InMemoryTaskManager;
 import ru.practicum.sprint4.model.*;
 
 public class Main {
@@ -12,15 +11,21 @@ public class Main {
         taskManager.createTask(new Task("Задача 1", "Помыть машину"));
         taskManager.createTask(new Task("Задача 2", "Подмести пол"));
         taskManager.createTask(new Task("Задача 3", "Вытрехнуть ковер"));
+
         System.out.println("Вывод всех созданных задач:");
         System.out.println(taskManager.getAllTasks());
         System.out.println("Вывод всех задач по id:");
         System.out.println(taskManager.getTaskById(1));
         System.out.println(taskManager.getTaskById(2));
         System.out.println(taskManager.getTaskById(3));
+        for (int i = 0; i < 13; i++) {
+            taskManager.createTask(new Task("Задача " + i, "проверка..."));
+            taskManager.getTaskById(i+3);
+        }
 
         System.out.println("\n история");
         System.out.println(taskManager.getHistory());
+        System.out.println("Размер истории: " + taskManager.getHistory().size());
 
         System.out.println("\n Обновление задач:");
         Task task4 = new Task("Задача 1", "Мою машину");
@@ -62,10 +67,12 @@ public class Main {
         System.out.println("\n Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("\n Все эпики: " + taskManager.getAllEpics());
 
-        System.out.println("\nвывели Эпик с id-4: " + taskManager.getEpicById(epic1.getId()));
-        System.out.println("вывели Cабтаск с id-7: " + taskManager.getSubTaskById(subTask1.getId()));
+        System.out.println("\nвывели Эпик с id- "+ epic1.getId() +
+                ": " + taskManager.getEpicById(epic1.getId()));
+        System.out.println("вывели Cабтаск с id- " + subTask1.getId() +
+                ": " + taskManager.getSubTaskById(subTask1.getId()));
 
-        System.out.println("\n Получаем сабтаски 4-го эпика: " + taskManager.getSubTaskByEpic(4));
+        System.out.println("\n Получаем сабтаски 4-го эпика: " + taskManager.getSubTaskByEpic(epic1.getId()));
 
         System.out.println("\n обновление Сабтасков:");
         SubTask subTask = new SubTask("Подзадача 4.1", "проверка исправленной подзадачи", epic1.getId());

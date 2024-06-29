@@ -185,7 +185,7 @@ public class InMemoryTaskManager implements TaskManager {
             return;
         }
 
-        ArrayList<SubTask> epicSubtasks = new ArrayList<>();
+        List<SubTask> epicSubtasks = new ArrayList<>();
 
         int countNew = 0;
         int countDone = 0;
@@ -216,7 +216,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Task> getHistory() {
+    public List<Task> getHistory() {
         return historyManager.getHistory();
     }
 }

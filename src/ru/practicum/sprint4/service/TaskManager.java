@@ -56,5 +56,5 @@ public interface TaskManager {
 
     int generateId();
 
-    ArrayList<Task> getHistory();
+    List<Task> getHistory();
 }

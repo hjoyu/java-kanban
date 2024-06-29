@@ -1,6 +1,7 @@
 package ru.practicum.sprint4.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InMemoryHistoryManagerTest {
 
     private final HistoryManager historyManager = new InMemoryHistoryManager();
-    static ArrayList<Task> history;
+    static List<Task> history;
     static Task task;
 
     @BeforeAll
