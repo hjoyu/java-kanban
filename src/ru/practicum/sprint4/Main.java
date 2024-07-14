@@ -7,7 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         TaskManager taskManager = Managers.getDefault();
-        HistoryManager historyManager = Managers.getDefaultHistory();
 
         taskManager.createTask(new Task("Задача 1", "Помыть машину"));
         taskManager.createTask(new Task("Задача 2", "Подмести пол"));

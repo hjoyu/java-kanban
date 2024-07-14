@@ -1,13 +1,9 @@
 package ru.practicum.sprint4.service;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
-import ru.practicum.sprint4.model.HistoryList;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.practicum.sprint4.model.HistoryList;
 import ru.practicum.sprint4.model.Task;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -7,7 +7,6 @@ import ru.practicum.sprint4.model.Task;
 import ru.practicum.sprint4.model.Node;
 
 public class InMemoryHistoryManager implements HistoryManager {
-int count=0;
     private final HistoryList history = new HistoryList();
 
     @Override
