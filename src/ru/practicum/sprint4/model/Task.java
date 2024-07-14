@@ -18,7 +18,7 @@ public class Task {
         taskName = name;
         this.description = description;
         status = TaskStatus.NEW;
-        this.id=id;
+        this.id = id;
     }
 
     public void setId(int id) {

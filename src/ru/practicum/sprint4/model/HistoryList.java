@@ -25,7 +25,7 @@ public class HistoryList {
 
     public List<Task> getTasks(){//получаем список задач
         List<Task> list = new ArrayList<>();
-        Node listElement=head;
+        Node listElement = head;
         while(listElement != null){
             list.add(listElement.getTask());
             listElement=listElement.getNext();
@@ -34,15 +34,15 @@ public class HistoryList {
     }
 
     public void removeNode(Node node){
-        Node next=node.getNext();
-        Node prev=node.getPrev();
-        if (prev==null){//если нет предыдущей ноды, то next нода становится в начало
+        Node next = node.getNext();
+        Node prev = node.getPrev();
+        if (prev == null){//если нет предыдущей ноды, то next нода становится в начало
             head=next;
         } else {
             prev.setNext(next);
             node.setPrev(null);
         }
-        if (next==null) {//если следующая нода пустая
+        if (next == null) {//если следующая нода пустая
             tail = prev;
         } else {
             next.setPrev(prev);
