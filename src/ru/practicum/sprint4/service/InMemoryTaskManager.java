@@ -21,7 +21,7 @@ public class InMemoryTaskManager implements TaskManager {
         epics = new HashMap<>();
         subTasks = new HashMap<>();
         nextId = 0;
-        historyManager=Managers.getDefaultHistory();
+        historyManager = Managers.getDefaultHistory();
     }
 
     //--------------получение всех задач-------------
@@ -43,7 +43,7 @@ public class InMemoryTaskManager implements TaskManager {
     //-----------------очистка всех задач-------------------
     @Override
     public void clearAllTasks() {
-        for (Task task: tasks.values()){
+        for (Task task: tasks.values()) {
             historyManager.remove(task.getId());
         }
         tasks.clear();
@@ -131,7 +131,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task getTaskById(int nextId) {
         Task task = tasks.get(nextId);
-        if (task == null){
+        if (task == null) {
             return null;
         }
         historyManager.add(task);
@@ -141,7 +141,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Epic getEpicById(int nextId) {
         Epic epic = epics.get(nextId);
-        if (epic == null){
+        if (epic == null) {
             return null;
         }
         historyManager.add(epic);
@@ -169,7 +169,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void clearEpicById(int nextId) {
         Epic epic = epics.get(nextId);
-        for (Integer taskId : epic.getTaskIds()){
+        for (Integer taskId : epic.getTaskIds()) {
             subTasks.remove(taskId);
         }
         epic.getTaskIds().clear();
@@ -209,14 +209,14 @@ public class InMemoryTaskManager implements TaskManager {
         for (int i = 0; i < epic.getTaskIds().size(); i++) {
             epicSubtasks.add(subTasks.get(epic.getTaskIds().get(i)));
         }
-        for (SubTask subtask : epicSubtasks){//проходимся по сабтаскам и проверяем их статус
+        for (SubTask subtask : epicSubtasks) {
             if (subtask.getTaskStatus() == TaskStatus.NEW) {
                 countNew++;
             } else if (subtask.getTaskStatus() == TaskStatus.DONE) {
                 countDone++;
             }
 
-            if (countNew == epicSubtasks.size()){//исходя из проверенных статусов сабтасков выставляем статус эпика
+            if (countNew == epicSubtasks.size()) {
                 epic.setTaskStatus(TaskStatus.NEW);
             } else if (countDone == epicSubtasks.size()) {
                 epic.setTaskStatus(TaskStatus.DONE);
