@@ -23,7 +23,7 @@ public class HistoryList {
         history.put(id, newNode);
     }
 
-    public List<Task> getTasks(){ //получаем список задач
+    public List<Task> getTasks() { //получаем список задач
         List<Task> list = new ArrayList<>();
         Node listElement = head;
         while (listElement != null) {
