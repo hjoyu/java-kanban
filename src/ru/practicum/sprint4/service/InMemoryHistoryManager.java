@@ -1,26 +1,37 @@
 package ru.practicum.sprint4.service;
 
-import ru.practicum.sprint4.model.Task;
-import java.util.ArrayList;
 import java.util.List;
 
-public class InMemoryHistoryManager implements HistoryManager {
+import ru.practicum.sprint4.model.HistoryList;
+import ru.practicum.sprint4.model.Task;
+import ru.practicum.sprint4.model.Node;
 
-    public final static int HISTORY_LIMIT=10;
-    private final ArrayList<Task> history = new ArrayList<>();
+public class InMemoryHistoryManager implements HistoryManager {
+int count=0;
+    private final HistoryList history = new HistoryList();
 
     @Override
     public void add(Task task) {
-        if (task != null) {
-            if (history.size() >= HISTORY_LIMIT) {
-                history.removeFirst();
+        int id = task.getId();
+        if (history.getHistoryMap().containsKey(id)) {
+            Node newNode = history.getHistoryMap().get(id);
+            history.removeNode(newNode);
             }
-            history.add(task);
+            history.linkLast(task);
+    }
+
+    @Override
+    public void remove(int id){
+        if (!history.getHistoryMap().containsKey(id)) {
+            return;
         }
+        Node node = history.getHistoryMap().remove(id);
+        history.removeNode(node);
     }
 
     @Override
     public List<Task> getHistory() {
-            return new ArrayList<>(history);
+            return history.getTasks();
     }
 }
+

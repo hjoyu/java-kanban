@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         TaskManager taskManager = Managers.getDefault();
+        HistoryManager historyManager = Managers.getDefaultHistory();
 
         taskManager.createTask(new Task("Задача 1", "Помыть машину"));
         taskManager.createTask(new Task("Задача 2", "Подмести пол"));
@@ -22,6 +23,7 @@ public class Main {
             taskManager.createTask(new Task("Задача " + i, "проверка..."));
             taskManager.getTaskById(i+3);
         }
+       // System.out.println(historyManager.getHistory());
 
         System.out.println("\n история");
         System.out.println(taskManager.getHistory());

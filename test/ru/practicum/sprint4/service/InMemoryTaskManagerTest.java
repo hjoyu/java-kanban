@@ -92,4 +92,23 @@ class InMemoryTaskManagerTest {
         ArrayList<SubTask> subtasks = taskManager.getAllSubTasks();
         assertTrue(subtasks.isEmpty(), "Список не пуст");
     }
+
+    @Test
+    void deleteTaskAndShouldReturnEmptyHistory() {
+        Task task1 = new Task("Test addNewTask description", "Test addNewTask");
+        Task task2 = new Task("Test addNewTask description", "Test addNewTask");
+        taskManager.createTask(task1);
+        taskManager.createTask(task2);
+        taskManager.getTaskById(task1.getId());
+        taskManager.getTaskById(task1.getId());
+        taskManager.getTaskById(task2.getId());
+
+        assertEquals(2,taskManager.getHistory().size(), "Длина списка не равна 2");
+        taskManager.clearTaskById(task1.getId());
+        assertEquals(1,taskManager.getHistory().size(), "Длина списка не равна 1");
+        taskManager.clearAllTasks();
+        assertEquals(0,taskManager.getHistory().size(), "Длина списка не равна 0");
+    }
+
+
 }
