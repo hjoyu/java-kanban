@@ -20,8 +20,9 @@ public class Main {
         System.out.println(taskManager.getTaskById(3));
         for (int i = 0; i < 13; i++) {
             taskManager.createTask(new Task("Задача " + i, "проверка..."));
-            taskManager.getTaskById(i+3);
+            taskManager.getTaskById(i + 3);
         }
+       // System.out.println(historyManager.getHistory());
 
         System.out.println("\n история");
         System.out.println(taskManager.getHistory());
@@ -67,7 +68,7 @@ public class Main {
         System.out.println("\n Все подзадачи: " + taskManager.getAllSubTasks());
         System.out.println("\n Все эпики: " + taskManager.getAllEpics());
 
-        System.out.println("\nвывели Эпик с id- "+ epic1.getId() +
+        System.out.println("\nвывели Эпик с id- " + epic1.getId() +
                 ": " + taskManager.getEpicById(epic1.getId()));
         System.out.println("вывели Cабтаск с id- " + subTask1.getId() +
                 ": " + taskManager.getSubTaskById(subTask1.getId()));
