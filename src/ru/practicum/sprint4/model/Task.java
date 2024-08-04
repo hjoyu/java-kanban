@@ -21,12 +21,29 @@ public class Task {
         this.id = id;
     }
 
+    public Task( String name, String description, TaskStatus status) {
+        taskName = name;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Task(int id, String name, String description, TaskStatus status) {
+        taskName = name;
+        this.description = description;
+        this.status = status;
+        this.id = id;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
     public int getId() {
         return id;
+    }
+
+    public TasksType getType() {
+        return TasksType.TASK;
     }
 
     public String getTaskName() {

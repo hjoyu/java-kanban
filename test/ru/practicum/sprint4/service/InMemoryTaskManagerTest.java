@@ -66,7 +66,6 @@ class InMemoryTaskManagerTest {
         assertEquals(subtask, savedSubtask, "Задачи не совпадают");
 
         final ArrayList<SubTask> subtasks = taskManager.getAllSubTasks();
-
         assertNotNull(subtasks, "Задачи не возвращаются");
         assertEquals(1, subtasks.size(), "Неверное количество задач.");
         assertEquals(subtask, subtasks.getFirst(), "Задачи не совпадают");
