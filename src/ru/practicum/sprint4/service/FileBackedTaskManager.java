@@ -54,8 +54,8 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         return fileManager;
     }
 
-    public void load(){
-        int maxId=0;
+    public void load() {
+        int maxId = 0;
         if (file.exists()) {
             try (BufferedReader bf = new BufferedReader(new FileReader(file, StandardCharsets.UTF_8))) {
                 bf.readLine();
@@ -129,10 +129,10 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
     private static String toString(Task task) {
         String epicId;
-        if (task instanceof SubTask){
-            epicId=Integer.toString(((SubTask) task).getEpicId());
+        if (task instanceof SubTask) {
+            epicId = Integer.toString(((SubTask) task).getEpicId());
         } else {
-            epicId="";
+            epicId = "";
         }
 
         return task.getId() + "," +

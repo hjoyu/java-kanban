@@ -21,8 +21,8 @@ public class FileBackedTaskManagerTest {
     @BeforeEach
     void beforeEach() throws IOException {
         file = File.createTempFile("BackedTest", ".csv");
-        task = new Task("Test addNewTask","Test addNewTask description");
-        epic = new Epic("Test addNewEpic","Test addNewEpic description");
+        task = new Task("Test addNewTask", "Test addNewTask description");
+        epic = new Epic("Test addNewEpic", "Test addNewEpic description");
         subtask = new SubTask("Test addNewSubtask", "Test addNewSubtask description", 2);
     }
 
@@ -42,14 +42,14 @@ public class FileBackedTaskManagerTest {
         fileManager.createEpic(epic);
         fileManager.createSubTask(subtask);
 
-        assertEquals(1, fileManager.tasks.size(),"неверное количество задач");
-        assertEquals(1, fileManager.epics.size(),"неверное количество задач");
-        assertEquals(1, fileManager.subTasks.size(),"неверное количество задач");
+        assertEquals(1, fileManager.tasks.size(), "неверное количество задач");
+        assertEquals(1, fileManager.epics.size(), "неверное количество задач");
+        assertEquals(1, fileManager.subTasks.size(), "неверное количество задач");
 
         FileBackedTaskManager fileManager2 = FileBackedTaskManager.loadFromFile(file);
 
-       assertEquals(fileManager.getAllTasks(), fileManager2.getAllTasks(), "Количество задач не совпадает");
-       assertEquals(fileManager.getAllEpics(), fileManager2.getAllEpics(), "Количество эпиков не совпадает");
-       assertEquals(fileManager.getAllSubTasks(), fileManager2.getAllSubTasks(), "Количество сабтасков не совпадает");
+        assertEquals(fileManager.getAllTasks(), fileManager2.getAllTasks(), "Количество задач не совпадает");
+        assertEquals(fileManager.getAllEpics(), fileManager2.getAllEpics(), "Количество эпиков не совпадает");
+        assertEquals(fileManager.getAllSubTasks(), fileManager2.getAllSubTasks(), "Количество сабтасков не совпадает");
     }
 }

@@ -102,13 +102,13 @@ class InMemoryTaskManagerTest {
         taskManager.getTaskById(task1.getId());
         taskManager.getTaskById(task2.getId());
 
-        assertEquals(2,taskManager.getHistory().size(), "Длина списка не равна 2");
+        assertEquals(2, taskManager.getHistory().size(), "Длина списка не равна 2");
 
         taskManager.clearTaskById(task1.getId());
-        assertEquals(1,taskManager.getHistory().size(), "Длина списка не равна 1");
+        assertEquals(1, taskManager.getHistory().size(), "Длина списка не равна 1");
 
         taskManager.clearAllTasks();
-        assertEquals(0,taskManager.getHistory().size(), "Длина списка не равна 0");
+        assertEquals(0, taskManager.getHistory().size(), "Длина списка не равна 0");
     }
 
 
