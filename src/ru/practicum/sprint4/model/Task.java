@@ -7,6 +7,7 @@ public class Task {
     private String taskName;
     private String description;
     private TaskStatus status;
+    private final TasksType type = TasksType.TASK;
 
     public Task(String name, String description) {
         taskName = name;
@@ -43,7 +44,7 @@ public class Task {
     }
 
     public TasksType getType() {
-        return TasksType.TASK;
+        return type;
     }
 
     public String getTaskName() {
@@ -73,6 +74,7 @@ public class Task {
     @Override
     public String toString() {
         return ("id = " + getId() +
+                ", тип задачи: " + type +
                 ", имя задачи: " + taskName +
                 ", описание: " + description +
                 ", статус: " + getTaskStatus() + "// ");

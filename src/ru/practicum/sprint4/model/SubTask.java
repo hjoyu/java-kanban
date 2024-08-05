@@ -3,6 +3,7 @@ package ru.practicum.sprint4.model;
 public class SubTask extends Task {
 
     private final int epicId;
+    private final TasksType type = TasksType.SUBTASK;
 
     public SubTask(String name, String description, int epicId) {
         super(name, description);
@@ -24,12 +25,13 @@ public class SubTask extends Task {
     }
 
     public TasksType getType() {
-        return TasksType.SUBTASK;
+        return type;
     }
 
     @Override
     public String toString() {
         return ("id = " + getId() +
+                ", тип задачи: " + type +
                 ", имя подзадачи: " + getTaskName() +
                 ", описание: " + getDescription() +
                 ", статус: " + getTaskStatus() +
