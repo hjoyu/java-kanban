@@ -8,9 +8,7 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-
-        File file = new File("file.csv");
-        FileBackedTaskManager fileManager = FileBackedTaskManager.loadFromFile(file);
+        FileBackedTaskManager fileManager = Managers.getDefaultFileManager();
 
         fileManager.createTask(new Task("Задача 1", "Помыть машину"));
         fileManager.createTask(new Task("Задача 2", "Подмести пол"));

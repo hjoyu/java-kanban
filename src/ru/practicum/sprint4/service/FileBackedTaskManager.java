@@ -26,7 +26,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             }
             Files.createFile(file.toPath());
         } catch (IOException e) {
-            throw new ManagerSaveException("Не удалось найти файл для сохранения");
+            throw new ManagerSaveException("Не удалось найти файл для сохранения", e);
         }
 
         try (FileWriter fileWriter = new FileWriter(file, StandardCharsets.UTF_8)) {
@@ -44,7 +44,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 fileWriter.write(toString(subTasks.get(key)) + "\n");
             }
         } catch (IOException e) {
-            throw new ManagerSaveException("Ошибка сохранения");
+            throw new ManagerSaveException("Ошибка сохранения", e);
         }
     }
 
@@ -61,10 +61,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 bf.readLine();
                 while (true) {
                     String line = bf.readLine();
-                    if (line == null) {
-                        break;
-                    }
-                    if (line.isEmpty()) {
+                    if (line == null || line.isEmpty()) {
                         break;
                     }
 
@@ -92,7 +89,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                     }
                 }
             } catch (IOException e) {
-                throw new ManagerSaveException("Не удалось получить данные из файла");
+                throw new ManagerSaveException("Не удалось получить данные из файла", e);
             }
         }
         nextId = maxId;
@@ -129,14 +126,15 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
     private static String toString(Task task) {
         String epicId;
-        if (task instanceof SubTask) {
+        TasksType type = task.getType();
+        if (type.equals(TasksType.SUBTASK)) {
             epicId = Integer.toString(((SubTask) task).getEpicId());
         } else {
             epicId = "";
         }
 
         return task.getId() + "," +
-                task.getType() + "," +
+                type + "," +
                 task.getTaskName() + "," +
                 task.getTaskStatus() + "," +
                 task.getDescription() + "," +
