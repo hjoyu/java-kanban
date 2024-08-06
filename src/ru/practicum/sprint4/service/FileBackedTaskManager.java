@@ -126,15 +126,14 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
     private static String toString(Task task) {
         String epicId;
-        TasksType type = task.getType();
-        if (type.equals(TasksType.SUBTASK)) {
+        if (task.getType().equals(TasksType.SUBTASK)) {
             epicId = Integer.toString(((SubTask) task).getEpicId());
         } else {
             epicId = "";
         }
 
         return task.getId() + "," +
-                type + "," +
+                task.getType() + "," +
                 task.getTaskName() + "," +
                 task.getTaskStatus() + "," +
                 task.getDescription() + "," +
