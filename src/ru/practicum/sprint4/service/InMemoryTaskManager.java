@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    public final HashMap<Integer, Task> tasks;
-    public final HashMap<Integer, Epic> epics;
-    public final HashMap<Integer, SubTask> subTasks;
-    private int nextId;
+    protected final HashMap<Integer, Task> tasks;
+    protected final HashMap<Integer, Epic> epics;
+    protected final HashMap<Integer, SubTask> subTasks;
+    protected int nextId;
     private final HistoryManager historyManager;
 
     public InMemoryTaskManager() {
@@ -43,7 +43,7 @@ public class InMemoryTaskManager implements TaskManager {
     //-----------------очистка всех задач-------------------
     @Override
     public void clearAllTasks() {
-        for (Task task: tasks.values()) {
+        for (Task task : tasks.values()) {
             historyManager.remove(task.getId());
         }
         tasks.clear();
@@ -51,7 +51,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void clearAllEpics() {
-        for (Epic epic: epics.values()) {
+        for (Epic epic : epics.values()) {
             historyManager.remove(epic.getId());
         }
         epics.clear();
@@ -60,7 +60,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void clearAllSubTasks() {
-        for (SubTask subTask: subTasks.values()) {
+        for (SubTask subTask : subTasks.values()) {
             historyManager.remove(subTask.getId());
         }
         for (Epic epic : epics.values()) {
@@ -94,7 +94,7 @@ public class InMemoryTaskManager implements TaskManager {
         Epic epic = epics.get(subTask.getEpicId());
         if (epic != null) {
             subTasks.put(subTaskId, subTask);
-            epic.addTaskIds(subTaskId);
+            epic.addSubTaskIds(subTaskId);
             syncEpic(epic);
         }
         return subTaskId;
