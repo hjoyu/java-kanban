@@ -74,7 +74,7 @@ public class Task {
     @Override
     public String toString() {
         return ("id = " + getId() +
-                ", тип задачи: " + type +
+                ", тип задачи: " + getType() +
                 ", имя задачи: " + taskName +
                 ", описание: " + description +
                 ", статус: " + getTaskStatus() + "// ");
