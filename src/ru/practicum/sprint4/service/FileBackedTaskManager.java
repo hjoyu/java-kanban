@@ -124,7 +124,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 break;
 
             case SUBTASK:
-                int epicId = Integer.parseInt(columns[5]);
+                int epicId = Integer.parseInt(columns[8]);
                 task = new SubTask(id, name, status, description, startTime, duration, epicId);
                 break;
 
@@ -141,9 +141,18 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         } else {
             epicId = "";
         }
-        String startTime = task.getStartTime().format(formatter);
-        String endTime = task.getEndTime().format(formatter);
-        String duration = String.valueOf(task.getDuration().toMinutes());
+        String startTime;
+        String endTime;
+        String duration;
+        try {
+            startTime = task.getStartTime().format(formatter);
+            endTime = task.getEndTime().format(formatter);
+            duration = String.valueOf(task.getDuration().toMinutes());
+        } catch (NullPointerException e) {
+            startTime = "0";
+            endTime = "0";
+            duration = "0";
+        }
 
         return task.getId() + "," +
                 task.getType() + "," +
