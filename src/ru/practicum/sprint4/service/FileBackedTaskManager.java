@@ -108,7 +108,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         String name = columns[2];
         TaskStatus status = TaskStatus.valueOf(columns[3]);
         String description = columns[4];
-        LocalDateTime startTime = LocalDateTime.parse(columns[5],formatter);
+        LocalDateTime startTime = LocalDateTime.parse(columns[5], formatter);
         Duration duration = Duration.ofMinutes(Long.parseLong(columns[7]));
 
         Task task;
@@ -118,7 +118,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 break;
 
             case EPIC:
-                LocalDateTime epicEndTime = LocalDateTime.parse(columns[6],formatter);
+                LocalDateTime epicEndTime = LocalDateTime.parse(columns[6], formatter);
                 task = new Epic(id, name, status, description, startTime, epicEndTime, duration);
                 task.setTaskStatus(status);
                 break;
