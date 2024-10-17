@@ -2,7 +2,6 @@ package ru.practicum.sprint4.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.practicum.sprint4.exceptions.ManagerSaveException;
 import ru.practicum.sprint4.model.*;
 
 import java.io.File;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
