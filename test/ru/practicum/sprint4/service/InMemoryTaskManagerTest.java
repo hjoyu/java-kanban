@@ -26,7 +26,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void addNewTask() {
-        int taskId = taskManager.createTask(task);
+        int taskId = taskManager.createTask(task).getId();
 
         final Task savedTask = taskManager.getTaskById(taskId);
 
@@ -59,8 +59,7 @@ class InMemoryTaskManagerTest {
     void addNewSubtask() {
         taskManager.createEpic(epic);
 
-        final int subtaskId = taskManager.createSubTask(subtask);
-        final SubTask savedSubtask = taskManager.getSubTaskById(subtaskId);
+        final SubTask savedSubtask = taskManager.createSubTask(subtask);
 
         assertNotNull(savedSubtask, "Задача не найдена.");
         assertEquals(subtask, savedSubtask, "Задачи не совпадают");

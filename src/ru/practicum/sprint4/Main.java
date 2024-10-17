@@ -3,12 +3,20 @@ package ru.practicum.sprint4;
 import ru.practicum.sprint4.service.*;
 import ru.practicum.sprint4.model.*;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class Main {
 
     public static void main(String[] args) {
         FileBackedTaskManager fileManager = Managers.getDefaultFileManager();
+        Task task1 = new Task("Задача 2", "Подмести пол");
+        task1.setStartTime(LocalDateTime.now());
+        task1.setDuration(Duration.ofMinutes(30));
 
-        fileManager.createTask(new Task("Задача 1", "Помыть машину"));
+        fileManager.createTask(task1);
+
+       /* fileManager.createTask(new Task("Задача 1", "Помыть машину"));
         fileManager.createTask(new Task("Задача 2", "Подмести пол"));
         fileManager.createTask(new Task("Задача 3", "Вытрехнуть ковер"));
 
@@ -92,10 +100,10 @@ public class Main {
         fileManager.update(epic);
         System.out.println("изменили эпик 6: " + fileManager.getEpicById(epic3.getId()));
 
-        /*----------проверка метода удаления всех подзадач-----
+        *//*----------проверка метода удаления всех подзадач-----
         fileManager.clearAllSubTasks();
         System.out.println("\n список всех эпиков: " + fileManager.getAllEpics());
-        System.out.println("\n список всех сабтасков: " + fileManager.getAllSubTasks());*/
+        System.out.println("\n список всех сабтасков: " + fileManager.getAllSubTasks());*//*
 
         System.out.println("\n Удаление по ID: удалили эпик 5 и подзадачу 4.2");
         fileManager.clearEpicById(epic2.getId());
@@ -108,7 +116,7 @@ public class Main {
         System.out.println(fileManager.getAllSubTasks());
         System.out.println(fileManager.getAllEpics());
         Epic lastEpic = new Epic("Эпик ласт", "Проверка работы файла");
-        fileManager.createEpic(lastEpic);
+        fileManager.createEpic(lastEpic);*/
 
     }
 

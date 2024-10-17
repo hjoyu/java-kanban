@@ -1,5 +1,7 @@
 package ru.practicum.sprint4.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Task {
@@ -8,6 +10,8 @@ public class Task {
     private String description;
     private TaskStatus status;
     private final TasksType type = TasksType.TASK;
+    private Duration duration;
+    private LocalDateTime startTime;
 
     public Task(String name, String description) {
         taskName = name;
@@ -33,6 +37,15 @@ public class Task {
         this.description = description;
         this.status = status;
         this.id = id;
+    }
+
+    public Task(int id, String name, TaskStatus status, String description, LocalDateTime startTime, Duration duration) {
+        this.id = id;
+        this.taskName = name;
+        this.status = status;
+        this.description = description;
+        this.startTime = startTime;
+        this.duration = duration;
     }
 
     public void setId(int id) {
@@ -69,6 +82,32 @@ public class Task {
 
     public TaskStatus getTaskStatus() {
         return status;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        if (startTime == null) {
+            return null;
+        }
+        if (duration == null) {
+            return startTime;
+        }
+        return startTime.plus(duration);
     }
 
     @Override
