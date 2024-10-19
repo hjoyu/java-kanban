@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 public class FileBackedTaskManager extends InMemoryTaskManager {
     private final File file;
     private static final String HEADER = "id, type, name, status, description, epic \n";
-    final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     public FileBackedTaskManager(File file) {
         this.file = file;
@@ -109,8 +109,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         String name = columns[2];
         TaskStatus status = TaskStatus.valueOf(columns[3]);
         String description = columns[4];
-        //LocalDateTime startTime = LocalDateTime.parse(columns[5], FORMATTER);
-        //Duration duration = Duration.ofMinutes(Long.parseLong(columns[7]));
 
         Task task;
         switch (type) {
