@@ -70,6 +70,10 @@ public class Epic extends Task {
                 ", имя эпика: " + getTaskName() +
                 ", описание: " + getDescription() +
                 ", статус: " + getTaskStatus() +
-                ", Id подзадач: " + getTaskIds() + "// ");
+                ", Id подзадач: " + getTaskIds() +
+                ", время начала: " + getStartTime() +
+                ", длительность: " + getDuration() +
+                ", время завершения задачи: " + getEndTime() + " // "
+        );
     }
 }

@@ -116,7 +116,10 @@ public class Task {
                 ", тип задачи: " + getType() +
                 ", имя задачи: " + taskName +
                 ", описание: " + description +
-                ", статус: " + getTaskStatus() + "// ");
+                ", статус: " + getTaskStatus() +
+                ", время начала: " + getStartTime() +
+                ", длительность: " + getDuration() +
+                ", время завершения задачи: " + getEndTime() + " // ");
     }
 
     @Override

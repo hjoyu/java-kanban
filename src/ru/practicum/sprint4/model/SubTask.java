@@ -38,6 +38,9 @@ public class SubTask extends Task {
                 ", имя подзадачи: " + getTaskName() +
                 ", описание: " + getDescription() +
                 ", статус: " + getTaskStatus() +
-                ", epicIds:" + getEpicId() + "// ");
+                ", epicIds:" + getEpicId() +
+                ", время начала: " + getStartTime() +
+                ", длительность: " + getDuration() +
+                ", время завершения задачи: " + getEndTime() + " // ");
     }
 }

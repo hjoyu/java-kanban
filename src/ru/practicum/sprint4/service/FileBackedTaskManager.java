@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 public class FileBackedTaskManager extends InMemoryTaskManager {
     private final File file;
     private static final String HEADER = "id, type, name, status, description, epic \n";
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     public FileBackedTaskManager(File file) {
         this.file = file;
@@ -80,6 +80,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                         case EPIC:
                             Epic epic = (Epic) task;
                             epics.put(id, epic);
+                            System.out.println(epics);
                             break;
 
                         case SUBTASK:
@@ -108,24 +109,26 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         String name = columns[2];
         TaskStatus status = TaskStatus.valueOf(columns[3]);
         String description = columns[4];
-        LocalDateTime startTime = LocalDateTime.parse(columns[5], formatter);
-        Duration duration = Duration.ofMinutes(Long.parseLong(columns[7]));
+        //LocalDateTime startTime = LocalDateTime.parse(columns[5], FORMATTER);
+        //Duration duration = Duration.ofMinutes(Long.parseLong(columns[7]));
 
         Task task;
         switch (type) {
             case TASK:
-                task = new Task(id, name, status, description, startTime, duration);
+                task = new Task(id, name, status, description, LocalDateTime.parse(columns[5], FORMATTER), Duration.ofMinutes(Long.parseLong(columns[7])));
                 break;
 
             case EPIC:
-                LocalDateTime epicEndTime = LocalDateTime.parse(columns[6], formatter);
+                LocalDateTime startTime = LocalDateTime.parse(columns[5], FORMATTER);
+                LocalDateTime epicEndTime = LocalDateTime.parse(columns[6], FORMATTER);
+                Duration duration = Duration.ofMinutes(Long.parseLong(columns[7]));
                 task = new Epic(id, name, status, description, startTime, epicEndTime, duration);
                 task.setTaskStatus(status);
                 break;
 
             case SUBTASK:
                 int epicId = Integer.parseInt(columns[8]);
-                task = new SubTask(id, name, status, description, startTime, duration, epicId);
+                task = new SubTask(id, name, status, description, LocalDateTime.parse(columns[5], FORMATTER), Duration.ofMinutes(Long.parseLong(columns[7])), epicId);
                 break;
 
             default:
@@ -145,13 +148,13 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         String endTime;
         String duration;
         try {
-            startTime = task.getStartTime().format(formatter);
-            endTime = task.getEndTime().format(formatter);
+            startTime = task.getStartTime().format(FORMATTER);
+            endTime = task.getEndTime().format(FORMATTER);
             duration = String.valueOf(task.getDuration().toMinutes());
         } catch (NullPointerException e) {
-            startTime = "0";
-            endTime = "0";
-            duration = "0";
+            startTime = "null";
+            endTime = "null";
+            duration = "null";
         }
 
         return task.getId() + "," +
