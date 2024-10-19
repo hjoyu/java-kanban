@@ -6,8 +6,6 @@ import ru.practicum.sprint4.model.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-import java.io.File;
-
 public class Main {
 
     public static void main(String[] args) {
