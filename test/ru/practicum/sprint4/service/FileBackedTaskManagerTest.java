@@ -2,13 +2,13 @@ package ru.practicum.sprint4.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.practicum.sprint4.exceptions.ManagerSaveException;
 import ru.practicum.sprint4.model.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,14 +22,20 @@ public class FileBackedTaskManagerTest {
     void beforeEach() throws IOException {
         file = File.createTempFile("BackedTest", ".csv");
         task = new Task("Test addNewTask", "Test addNewTask description");
+        task.setStartTime(LocalDateTime.now());
+        task.setDuration(Duration.ofMinutes(30));
         epic = new Epic("Test addNewEpic", "Test addNewEpic description");
         subtask = new SubTask("Test addNewSubtask", "Test addNewSubtask description", 2);
+        subtask.setStartTime(LocalDateTime.now().plusHours(1));
+        subtask.setDuration(Duration.ofMinutes(15));
     }
 
     @Test
     void saveNewTaskInFile() {
         FileBackedTaskManager fileManager = new FileBackedTaskManager(file);
         Task task1 = new Task("Task", "Task description");
+        task1.setStartTime(LocalDateTime.now().plusHours(2));
+        task1.setDuration(Duration.ofMinutes(30));
         fileManager.createTask(task1);
         assertTrue(Files.exists(file.toPath()));
     }

@@ -23,11 +23,11 @@ public interface TaskManager {
     void clearAllSubTasks();
 
     //----------------------Создание задач----------------------//
-    int createTask(Task newTask);
+    Task createTask(Task newTask);
 
     int createEpic(Epic epic);
 
-    int createSubTask(SubTask subTask);
+    SubTask createSubTask(SubTask subTask);
 
     //------------обновление задач------
     void update(Task newTask);
@@ -57,4 +57,6 @@ public interface TaskManager {
     int generateId();
 
     List<Task> getHistory();
+
+    List<Task> getPrioritizedTasks();
 }

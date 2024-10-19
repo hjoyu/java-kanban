@@ -1,5 +1,8 @@
 package ru.practicum.sprint4.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class SubTask extends Task {
 
     private final int epicId;
@@ -15,8 +18,8 @@ public class SubTask extends Task {
         this.epicId = epicId;
     }
 
-    public SubTask(String name, String description, TaskStatus status, int epicId) {
-        super(name, description, status);
+    public SubTask(int id, String name, TaskStatus status, String description, LocalDateTime startTime, Duration duration, int epicId) {
+        super(id, name, status, description, startTime, duration);
         this.epicId = epicId;
     }
 
@@ -31,10 +34,13 @@ public class SubTask extends Task {
     @Override
     public String toString() {
         return ("id = " + getId() +
-                ", тип задачи: " + type +
+                ", тип задачи: " + getType() +
                 ", имя подзадачи: " + getTaskName() +
                 ", описание: " + getDescription() +
                 ", статус: " + getTaskStatus() +
-                ", epicIds:" + getEpicId() + "// ");
+                ", epicIds:" + getEpicId() +
+                ", время начала: " + getStartTime() +
+                ", длительность: " + getDuration() +
+                ", время завершения задачи: " + getEndTime() + " // ");
     }
 }
